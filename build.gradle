@@ -1,0 +1,39 @@
+group 'marklogic-semantics-mlcp-performance-tests'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'com.kncept.junit5.reporter'
+
+sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-RC2'
+        classpath 'com.kncept.junit5.reporter:junit-reporter:1.0.0'
+    }
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations.all {
+    exclude module: 'slf4j-log4j12'
+}
+
+dependencies {
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.0.0-RC2")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.0.0-RC2")
+
+    // Adding this until IntelliJ catches up
+    testRuntime("org.junit.platform:junit-platform-launcher:1.0.0-RC2")
+
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'com.marklogic', name: 'mlcp', version: '9.0.2'
+}
