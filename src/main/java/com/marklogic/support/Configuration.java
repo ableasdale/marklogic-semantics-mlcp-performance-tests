@@ -17,4 +17,21 @@ public class Configuration {
 
     // TODO - Configure triple idx (XDMP-TRPLIDXNOTFOUND) AND COLLECTION LEXICON
 
+    public static String[] loadContent(String inputfilename) {
+        return new String[]{
+                "import",
+                "-username", "admin",
+                "-password", "admin",
+                "-host", "localhost",
+                "-port", "8000",
+                "-database", "marklogic-rdf4j-test-content",
+                "-mode", "local",
+                "-input_file_type", "rdf",
+                "-input_file_path",  String.format("%s/%s%s", System.getProperty("user.dir"), Configuration.RESOURCES, inputfilename),
+                "-thread_count", "64",
+                "-batch_size", "201" // will reset to 200
+                //String.format("input_file_path %s", inputFilePath)
+        };
+    };
+
 }

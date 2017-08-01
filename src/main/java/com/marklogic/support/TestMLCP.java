@@ -7,26 +7,13 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 
+import static com.marklogic.support.Configuration.loadContent;
+
 public class TestMLCP {
 
     private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    public static String[] loadContent(String inputfilename) {
-        return new String[]{
-                "import",
-                "-username", "admin",
-                "-password", "admin",
-                "-host", "localhost",
-                "-port", "8000",
-                "-database", "marklogic-rdf4j-test-content",
-                "-mode", "local",
-                "-input_file_type", "rdf", 
-                "-input_file_path",  String.format("%s/%s%s", System.getProperty("user.dir"), Configuration.RESOURCES, inputfilename),
-                "-thread_count", "64",
-                "-batch_size", "500"
-                //String.format("input_file_path %s", inputFilePath)
-        };
-    };
+
 
 
     public static void main(String[] args) {
