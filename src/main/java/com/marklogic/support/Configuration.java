@@ -22,14 +22,14 @@ public class Configuration {
                 "import",
                 "-username", USERNAME,
                 "-password", PASSWORD,
-                "-host", "localhost",
-                "-port", "8000",
+                "-host", HOST,
+                "-port", String.valueOf(PORT),
                 "-database", DATABASE,
                 "-mode", "local",
                 "-input_file_type", "rdf",
                 "-input_file_path",  String.format("%s/%s%s", System.getProperty("user.dir"), Configuration.RESOURCES, inputfilename),
                 "-thread_count", "64",
-                "-batch_size", "201" // will reset to 200
+                "-batch_size", "200" // will reset to 200
                 //String.format("input_file_path %s", inputFilePath)
         };
     };

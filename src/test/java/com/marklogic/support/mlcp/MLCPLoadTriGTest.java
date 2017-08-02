@@ -42,7 +42,7 @@ class MLCPLoadTriGTest {
     void testLoadingLargeTriGFile() {
         assertTimeoutPreemptively(ofSeconds(150), () -> ContentPump.runCommand(loadContent("/trig/wp-monthy_all.trig")));
         assertEquals(668367, MarkLogicReSTApiClientProvider.getTripleCount());
-        assertEquals(107737, MarkLogicReSTApiClientProvider.getGraphCount());
+        assertEquals(107737, MarkLogicReSTApiClientProvider.getGraphCount());  // TODO - why is this different?
     }
 
 }
