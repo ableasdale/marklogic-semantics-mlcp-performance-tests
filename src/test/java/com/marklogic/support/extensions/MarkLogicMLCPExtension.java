@@ -1,10 +1,13 @@
 package com.marklogic.support.extensions;
 
+import com.marklogic.support.providers.MarkLogicReSTApiClientProvider;
 import org.junit.jupiter.api.extension.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.invoke.MethodHandles;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MarkLogicMLCPExtension implements BeforeAllCallback, BeforeTestExecutionCallback, AfterTestExecutionCallback, AfterAllCallback, Extension {
 
@@ -14,12 +17,14 @@ public class MarkLogicMLCPExtension implements BeforeAllCallback, BeforeTestExec
     public void afterAll(ExtensionContext context) throws Exception {
         LOG.debug(String.format("%s (AFTER ALL TESTS)", MethodHandles.lookup().lookupClass().getSimpleName()));
         LOG.info("■ MarkLogic Content Pump (AFTER ALL TESTS) ■");
+        assertEquals(200, MarkLogicReSTApiClientProvider.createPostForClearingDatabase().getStatus());
     }
 
     @Override
     public void afterTestExecution(ExtensionContext context) throws Exception {
         LOG.debug(String.format("%s (AFTER TEST)", MethodHandles.lookup().lookupClass().getSimpleName()));
         LOG.info(String.format(" ■■ MarkLogic Content Pump (AFTER) ■ %s ■■", context.getDisplayName()));
+        assertEquals(200, MarkLogicReSTApiClientProvider.createPostForClearingDatabase().getStatus());
     }
 
     @Override

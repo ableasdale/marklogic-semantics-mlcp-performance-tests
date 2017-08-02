@@ -20,11 +20,11 @@ public class Configuration {
     public static String[] loadContent(String inputfilename) {
         return new String[]{
                 "import",
-                "-username", "admin",
-                "-password", "admin",
+                "-username", USERNAME,
+                "-password", PASSWORD,
                 "-host", "localhost",
                 "-port", "8000",
-                "-database", "marklogic-rdf4j-test-content",
+                "-database", DATABASE,
                 "-mode", "local",
                 "-input_file_type", "rdf",
                 "-input_file_path",  String.format("%s/%s%s", System.getProperty("user.dir"), Configuration.RESOURCES, inputfilename),
