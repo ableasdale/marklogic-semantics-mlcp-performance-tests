@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 @Tag("turtle")
 @MarkLogicMLCP
 @DisplayName("Benchmarking performance when loading Turtle (.ttl) files using MarkLogic Content Pump (MLCP)")
-class MLCPTurtleTest {
+class MLCPLoadTurtleTest {
 
     @Benchmark
     @RepeatedTest(2)
