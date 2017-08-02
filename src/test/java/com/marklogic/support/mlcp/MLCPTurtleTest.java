@@ -1,4 +1,4 @@
-package com.marklogic.support;
+package com.marklogic.support.mlcp;
 
 import com.marklogic.contentpump.ContentPump;
 import com.marklogic.support.annotations.Benchmark;
@@ -18,40 +18,34 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 @Tag("turtle")
 @MarkLogicMLCP
 @DisplayName("Benchmarking performance when loading Turtle (.ttl) files using MarkLogic Content Pump (MLCP)")
-public class MLCPTurtleTest {
+class MLCPTurtleTest {
 
-    /*
-
-      @Benchmark
+    @Benchmark
     @RepeatedTest(2)
-    @DisplayName("Using the ReST API to load a 596Kb x-turtle file (charging-stations-export-20170530-095533.ttl)")
+    @DisplayName("Using MarkLogic Content Pump to load a 596Kb x-turtle file (charging-stations-export-20170530-095533.ttl)")
     void testLoadingSmallXTurtleFile() {
-        ClientResponse res = assertTimeoutPreemptively(ofSeconds(5), () -> MarkLogicReSTApiClientProvider.createPostForTurtle("turtle/charging-stations-export-20170530-095533.ttl"));
-        assertEquals(201, res.getStatus());
+        assertTimeoutPreemptively(ofSeconds(5), () -> ContentPump.runCommand(loadContent("/turtle/charging-stations-export-20170530-095533.ttl")));
         assertEquals(8900, MarkLogicReSTApiClientProvider.getTripleCount());
         assertEquals(2, MarkLogicReSTApiClientProvider.getGraphCount());
     }
 
     @Benchmark
     @RepeatedTest(2)
-    @DisplayName("Using the ReST API to load a 779K Turtle file (units.ttl)")
+    @DisplayName("Using MarkLogic Content Pump to load a 779K Turtle file (units.ttl)")
     void testLoadingSmallTurtleFile() {
-        ClientResponse res = assertTimeoutPreemptively(ofSeconds(5), () -> MarkLogicReSTApiClientProvider.createPostForTurtle("turtle/units.ttl"));
-        assertEquals(201, res.getStatus());
+        assertTimeoutPreemptively(ofSeconds(5), () -> ContentPump.runCommand(loadContent("/turtle/units.ttl")));
         assertEquals(23485, MarkLogicReSTApiClientProvider.getTripleCount());
         assertEquals(2, MarkLogicReSTApiClientProvider.getGraphCount());
     }
 
     @Benchmark
     @RepeatedTest(2)
-    @DisplayName("Using the ReST API to load a 3.3MB Turtle file (unescothes.ttl)")
+    @DisplayName("Using MarkLogic Content Pump to load a 3.3MB Turtle file (unescothes.ttl)")
     void testLoadingMediumSizeTurtleFile() {
-        ClientResponse res = assertTimeoutPreemptively(ofSeconds(10), () -> MarkLogicReSTApiClientProvider.createPostForTurtle("turtle/unescothes.ttl"));
-        assertEquals(201, res.getStatus());
+        assertTimeoutPreemptively(ofSeconds(15), () -> ContentPump.runCommand(loadContent("/turtle/unescothes.ttl")));
         assertEquals(75202, MarkLogicReSTApiClientProvider.getTripleCount());
         assertEquals(2, MarkLogicReSTApiClientProvider.getGraphCount());
     }
-     */
 
     @Benchmark
     @RepeatedTest(2)
