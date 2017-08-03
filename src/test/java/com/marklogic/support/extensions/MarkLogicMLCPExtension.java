@@ -31,11 +31,13 @@ public class MarkLogicMLCPExtension implements BeforeAllCallback, BeforeTestExec
     public void beforeAll(ExtensionContext context) throws Exception {
         LOG.debug(String.format("%s (BEFORE ALL TESTS)", MethodHandles.lookup().lookupClass().getSimpleName()));
         LOG.info("■ MarkLogic Content Pump (BEFORE ALL TESTS) ■");
+        assertEquals(0, MarkLogicReSTApiClientProvider.getTripleCount());
     }
 
     @Override
     public void beforeTestExecution(ExtensionContext context) throws Exception {
         LOG.debug(String.format("%s (BEFORE TEST)", MethodHandles.lookup().lookupClass().getSimpleName()));
         LOG.info(String.format(" ■■ MarkLogic Content Pump (BEFORE) ■ %s ■■", context.getDisplayName()));
+        assertEquals(0, MarkLogicReSTApiClientProvider.getTripleCount());
     }
 }

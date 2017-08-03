@@ -28,8 +28,10 @@ public class Configuration {
                 "-mode", "local",
                 "-input_file_type", "rdf",
                 "-input_file_path",  String.format("%s/%s%s", System.getProperty("user.dir"), Configuration.RESOURCES, inputfilename),
-                "-thread_count", "64",
-                "-batch_size", "200" // will reset to 200
+                //"-split_input", "true",
+                "-thread_count", "32",
+                "-batch_size", "200",
+                "-fastload"// will reset to 200
                 //String.format("input_file_path %s", inputFilePath)
         };
     };
